@@ -43,10 +43,10 @@ public class ListCFragment extends ListFragment implements
     private SimpleCursorAdapter mAdapter;
 
     private  String[] FROM = {
-    CoordinatesContract.Column.NOMBRE, CoordinatesContract.Column.CREATED_AT};
+    CoordinatesContract.Column.NOMBRE, CoordinatesContract.Column.CREATED_AT, CoordinatesContract.Column.LONGITUD, CoordinatesContract.Column.LATITUD};
 
     private  int[] TO = {
-            R.id.list_item_nombre};
+            R.id.list_item_nombre, R.id.list_item_fecha, R.id.list_item_longitud, R.id.list_item_latitud};
 
 
     @Override
@@ -105,9 +105,9 @@ public class ListCFragment extends ListFragment implements
         Log.d("Fragment","pulsado"  + "posicion en la lista: "+mAdapter.getCursor().getPosition()
                 +" longitud: " +mAdapter.getCursor().getString(3) +
                 " latitud: " +mAdapter.getCursor().getString(2));
-   //     Toast.makeText(getActivity(), "Ha pulsado lat: "+ /*+mAdapter.getCursor().getPosition()*/
-    //            mAdapter.getCursor().getString(2) + "long: "+mAdapter.getCursor().getString(3),
-     //           Toast.LENGTH_SHORT).show();
+        //     Toast.makeText(getActivity(), "Ha pulsado lat: "+ /*+mAdapter.getCursor().getPosition()*/
+        //            mAdapter.getCursor().getString(2) + "long: "+mAdapter.getCursor().getString(3),
+        //           Toast.LENGTH_SHORT).show();
         Log.d("pinguino mortal", "coords actual  son" +LocationService.getLatitud() + LocationService.getLongitud());
         Log.d("pinguino emperador", "coords coche son"+ "latcoche"+ mAdapter.getCursor().getString(2) +"longcoche" + mAdapter.getCursor().getString(3));
         Intent intent = new Intent(this.getActivity(), MapsActivityCarga.class);
@@ -120,7 +120,7 @@ public class ListCFragment extends ListFragment implements
 
         startActivity(intent);
         //mAdapter.getCursor().getString(mAdapter.getCursor().getPosition()) -->
-            //Posicion 2 == latitud
+        //Posicion 2 == latitud
         //Posicion 3 == longitud
         //la lista empieza en 0
         //Ver como sacar las coordenadas a partir de esta posición.
