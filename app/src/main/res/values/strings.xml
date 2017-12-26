@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">CercaTrova V2</string>
+    <string name="purge">Borrar localizaciones</string>
+    <string name="action_settings">Opciones</string>
+    <string name="titleServiceStart">Arrancar servicio</string>
+    <string name="titleServiceStop">Parar servicio</string>
+    <string name="intervaloActualizacion">Intervalo de actaulización en segundos</string>
+    <string name="titleIntervaloActualizacion">Intervalo de actualización</string>
+    <string name="aplicationColor">Color de la aplicación</string>
+
+    <string name="color_item_rojo">Rojo</string>
+    <string name="color_item_azul">Azul</string>
+    <string name="color_item_verde">Verde</string>
+    <string name="color_item_negro">Negro</string>
+    <string name="color_item_gris">Gris</string>
+
+    <string name="color_rojo_value">#EE0000</string>
+    <string name="color_azul_value">#0033CC</string>
+    <string name="color_verde_value">#007700</string>
+    <string name="color_negro_value">#000000</string>
+    <string name="color_gris_value">#BBBBBB</string>
+    <string name="title_activity_maps_carga">Map</string>
+    <string name="title_activity_maps_guardar">Map</string>
+
+
+</resources>

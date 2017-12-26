@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Intervalo de actualizacion-->
+    <EditTextPreference
+        android:summary="@string/intervaloActualizacion"
+        android:title="@string/titleIntervaloActualizacion"
+        android:key="update_interval" />
+
+    <!-- Color de la aplicación -->
+    <ListPreference
+        android:key="aplication_color"
+        android:title="@string/aplicationColor"
+        android:entries="@array/color_items"
+        android:entryValues="@array/color_values"/>
+
+    <!-- Tipo de marcadores -->
+
+
+</PreferenceScreen>
