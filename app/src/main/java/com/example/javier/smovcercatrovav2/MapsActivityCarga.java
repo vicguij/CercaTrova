@@ -14,6 +14,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
@@ -73,7 +74,22 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         String color = prefs.getString("aplication_color", "");
+        String item_coche = prefs.getString("aplication_item_coche", "");
+        String item_actual = prefs.getString("aplication_item_actual", "");
+        String estilo_mapa = prefs.getString("aplication_tipo_mapa", "");
         Log.d("Color:",color);
+        Log.d("Item conche:",item_coche);
+        Log.d("Item actual:",item_actual);
+        Log.d("Tipo mapa:",estilo_mapa);
+
+
+        //mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this, R.raw.aubergine));
+        /*
+             //Aplicamos el estilo personalizado de mapa
+        mapa.setMapStyle(
+            MapStyleOptions.loadRawResourceStyle(
+                this, R.raw.formato_mapa));
+         */
 
         mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche wiii"));
         mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual"));

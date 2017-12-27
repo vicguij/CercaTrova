@@ -23,4 +23,11 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:entries="@array/actual_items"
         android:entryValues="@array/actual_values"/>
 
+    <ListPreference
+        android:key="aplication_tipo_mapa"
+        android:title="Estilo del mapa"
+        android:summary="Summary"
+        android:entries="@array/mapa_items"
+        android:entryValues="@array/mapa_values"/>
+
 </PreferenceScreen>
