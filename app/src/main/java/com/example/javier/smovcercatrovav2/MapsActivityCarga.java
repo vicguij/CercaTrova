@@ -1,7 +1,9 @@
 package com.example.javier.smovcercatrovav2;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -29,6 +32,8 @@ import java.util.List;
 public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +68,17 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
         Log.d("pinguino asesino", "posicion coche lat " + posicionCoche.latitude +"long " + posicionCoche.longitude );
         Log.d("pinguino asesino", "posicion actual lat " + posicionactual.latitude +"long " + posicionactual.longitude );
 
+        //mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche wiii")).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.person1morado));
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        String color = prefs.getString("aplication_color", "");
+        Log.d("Color:",color);
+
         mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche wiii"));
         mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual"));
+
+
 
         //mMap.addPolyline( new PolylineOptions().add(posicionactual, posicionCoche).width(5).color(Color.RED));
 

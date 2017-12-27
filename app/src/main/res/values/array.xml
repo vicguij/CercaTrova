@@ -2,20 +2,68 @@
 <resources>
 
     <string-array name="color_items">
+        <item>@string/color_item_negro</item>
         <item>@string/color_item_rojo</item>
         <item>@string/color_item_azul</item>
+        <item>@string/color_item_amarillo</item>
         <item>@string/color_item_verde</item>
-        <item>@string/color_item_negro</item>
         <item>@string/color_item_gris</item>
+        <item>@string/color_item_morado</item>
     </string-array>
 
     <string-array name="color_values">
+        <item>@string/color_negro_value</item>
         <item>@string/color_rojo_value</item>
         <item>@string/color_azul_value</item>
+        <item>@string/color_amarillo_value</item>
         <item>@string/color_verde_value</item>
-        <item>@string/color_negro_value</item>
         <item>@string/color_gris_value</item>
+        <item>@string/color_morado_value</item>
     </string-array>
+
+    <string-array name="coche_items">
+        <item>Coche 1</item>
+        <item>Coche 2</item>
+        <item>Bandera</item>
+        <item>Marca 1</item>
+        <item>Marca 2</item>
+        <item>Marca 3</item>
+        <item>Marca 4</item>
+    </string-array>
+
+    <string-array name="coche_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+
+    <string-array name="actual_items">
+        <item>Bandera</item>
+        <item>Persona 1</item>
+        <item>Persona 2</item>
+        <item>Persona 3</item>
+        <item>Marca 1</item>
+        <item>Marca 2</item>
+        <item>Marca 3</item>
+        <item>Marca 4</item>
+    </string-array>
+
+    <string-array name="actual_values">
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
 
 
 </resources>
