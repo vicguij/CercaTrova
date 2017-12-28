@@ -12,7 +12,11 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -44,7 +48,6 @@ public class ListCFragment extends ListFragment implements
 
     private  String[] FROM = {
     CoordinatesContract.Column.NOMBRE, CoordinatesContract.Column.CREATED_AT, CoordinatesContract.Column.LONGITUD, CoordinatesContract.Column.LATITUD};
-
     private  int[] TO = {
             R.id.list_item_nombre, R.id.list_item_fecha, R.id.list_item_longitud, R.id.list_item_latitud};
 
@@ -53,6 +56,7 @@ public class ListCFragment extends ListFragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // TODO Auto-generated method stub
+
         return inflater.inflate(R.layout.list_fragment, container, false);
     }
 
@@ -68,10 +72,7 @@ public class ListCFragment extends ListFragment implements
         mAdapter = new SimpleCursorAdapter(getActivity(), R.layout.list_fragment,
                 null, FROM, TO, 0);
         setListAdapter(mAdapter);
-
         getLoaderManager().initLoader(LOADER_ID, null, this);
-
-        super.onCreate(savedInstanceState);
 
     }
 
@@ -102,7 +103,7 @@ public class ListCFragment extends ListFragment implements
         super.onListItemClick(l, v, position, id);
 
         // Mostramos un mensaje con el elemento pulsado
-        Log.d("Fragment","pulsado"  + "posicion en la lista: "+mAdapter.getCursor().getPosition()
+        Log.d("pinguino cachondot","pulsado"  + "posicion en la lista: "+mAdapter.getCursor().getPosition()
                 +" longitud: " +mAdapter.getCursor().getString(3) +
                 " latitud: " +mAdapter.getCursor().getString(2));
         //     Toast.makeText(getActivity(), "Ha pulsado lat: "+ /*+mAdapter.getCursor().getPosition()*/
@@ -126,6 +127,42 @@ public class ListCFragment extends ListFragment implements
         //Ver como sacar las coordenadas a partir de esta posición.
     }
 
+    @Override
+    public void onActivityCreated(Bundle savedState) {
+        super.onActivityCreated(savedState);
+       // registerForContextMenu(getActivity().findViewById(android.R.id.list));
+        registerForContextMenu(getListView());
+
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.menu_contex, menu);
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()) {
+            case R.id.Opc1:
+                Toast.makeText(getActivity(),"Pulsado!",Toast.LENGTH_SHORT).show();
+
+                Log.d("pinguino canario", "posicion" +info.position + " " + info.id);
+//BORRAR:dos maneras: A través de info.position (posicion en la base de datos) o info.id que parece ser el id del item en la base de datos.
+
+                return true;
+            case R.id.Opc2:
+                //deleteNote(info.id);
+                Toast.makeText(getActivity(),"Pulsado2!",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
 
 
 }
