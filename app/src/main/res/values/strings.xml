@@ -17,13 +17,6 @@
     <string name="color_item_gris">Gris</string>
     <string name="color_item_morado">Morado</string>
 
-    <string name="color_negro_value">#000000</string>
-    <string name="color_rojo_value">#ff0000</string>
-    <string name="color_azul_value">#0049a4</string>
-    <string name="color_amarillo_value">#fff600</string>
-    <string name="color_verde_value">#0f9149</string>
-    <string name="color_gris_value">#767676</string>
-    <string name="color_morado_value">#8300e8</string>
 
 
     <string name="title_activity_maps_carga">Map</string>

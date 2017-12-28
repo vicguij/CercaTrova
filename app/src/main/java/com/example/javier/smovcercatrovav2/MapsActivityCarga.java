@@ -69,34 +69,27 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
         Log.d("pinguino asesino", "posicion coche lat " + posicionCoche.latitude +"long " + posicionCoche.longitude );
         Log.d("pinguino asesino", "posicion actual lat " + posicionactual.latitude +"long " + posicionactual.longitude );
 
-        //mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche wiii")).setIcon(BitmapDescriptorFactory.fromResource(R.drawable.person1morado));
-
         prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String color = prefs.getString("aplication_color", "");
-        String item_coche = prefs.getString("aplication_item_coche", "");
-        String item_actual = prefs.getString("aplication_item_actual", "");
-        String estilo_mapa = prefs.getString("aplication_tipo_mapa", "");
-        Log.d("Color:",color);
-        Log.d("Item conche:",item_coche);
-        Log.d("Item actual:",item_actual);
-        Log.d("Tipo mapa:",estilo_mapa);
+        MapStyles.setActivity(this);
+        MapStyles.setStyles(prefs);
 
+        //SE aplican los estilos
+        if(MapStyles.getMapStyle()!=0){
+            mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this, MapStyles.getMapStyle()));
+        }
 
-        //mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this, R.raw.aubergine));
-        /*
-             //Aplicamos el estilo personalizado de mapa
-        mapa.setMapStyle(
-            MapStyleOptions.loadRawResourceStyle(
-                this, R.raw.formato_mapa));
-         */
+        if(MapStyles.getEstiloItemCoche()!=0){
+            mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche")).setIcon(BitmapDescriptorFactory.fromResource(MapStyles.getEstiloItemCoche()));
+        }else{
+            mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche"));
+        }
 
-        mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche wiii"));
-        mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual"));
-
-
-
-        //mMap.addPolyline( new PolylineOptions().add(posicionactual, posicionCoche).width(5).color(Color.RED));
+        if(MapStyles.getEstiloItemActual()!=0){
+            mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual")).setIcon(BitmapDescriptorFactory.fromResource(MapStyles.getEstiloItemActual()));
+        }else{
+            mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual"));
+        }
 
         String url = obtenerDireccionesURL(posicionactual, posicionCoche);
         DownloadTask downloadTask = new DownloadTask();
@@ -233,9 +226,11 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
 
                 lineOptions.addAll(points);
                 lineOptions.width(8);
-                lineOptions.color(Color.rgb(0,0,255));
+                lineOptions.color(Color.parseColor(MapStyles.getPolylineColor()));
+                //lineOptions.color(Color.rgb(0,0,255));
             }
             if(lineOptions!=null) {
+                lineOptions.color(Color.parseColor(MapStyles.getPolylineColor()));
                 mMap.addPolyline(lineOptions);
             }
         }

@@ -12,16 +12,17 @@
     </string-array>
 
     <string-array name="color_values">
-        <item>@string/color_negro_value</item>
-        <item>@string/color_rojo_value</item>
-        <item>@string/color_azul_value</item>
-        <item>@string/color_amarillo_value</item>
-        <item>@string/color_verde_value</item>
-        <item>@string/color_gris_value</item>
-        <item>@string/color_morado_value</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
     </string-array>
 
     <string-array name="coche_items">
+        <item>Por defecto</item>
         <item>Coche 1</item>
         <item>Coche 2</item>
         <item>Bandera</item>
@@ -32,6 +33,7 @@
     </string-array>
 
     <string-array name="coche_values">
+        <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -43,6 +45,7 @@
 
 
     <string-array name="actual_items">
+        <item>Por defecto</item>
         <item>Bandera</item>
         <item>Persona 1</item>
         <item>Persona 2</item>
@@ -54,6 +57,7 @@
     </string-array>
 
     <string-array name="actual_values">
+        <item>0</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>

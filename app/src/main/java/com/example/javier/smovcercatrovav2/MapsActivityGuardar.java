@@ -2,7 +2,9 @@ package com.example.javier.smovcercatrovav2;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.sql.Timestamp;
@@ -26,6 +29,7 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
     private GoogleMap mMap;
     private Button btnGuardar;
     private EditText txt;
+    SharedPreferences prefs;
     LatLng posicion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +67,21 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        MapStyles.setActivity(this);
+        MapStyles.setStyles(prefs);
+
+        //SE aplican los estilos
+        if(MapStyles.getMapStyle()!=0){
+            mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this, MapStyles.getMapStyle()));
+        }
+
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         Bundle bundle = getIntent().getExtras();
         posicion = new LatLng(bundle.getDouble("lat"),bundle.getDouble("long"));
-        mMap.addMarker(new MarkerOptions().position(posicion).title("Ubicacion Wiii"));
+        mMap.addMarker(new MarkerOptions().position(posicion).title("Ubicacion"));
 
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicion,17));
     }
