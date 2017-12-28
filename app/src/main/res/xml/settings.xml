@@ -2,6 +2,11 @@
 <PreferenceScreen
 xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <EditTextPreference
+        android:summary="@string/intervaloActualizacion"
+        android:title="@string/titleIntervaloActualizacion"
+        android:key="update_interval" />
+
 <ListPreference
     android:key="aplication_color"
     android:title="@string/aplicationColor"
