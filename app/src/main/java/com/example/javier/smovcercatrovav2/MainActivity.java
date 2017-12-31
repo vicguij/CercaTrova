@@ -15,7 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
-
+    public static int contador=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +23,15 @@ public class MainActivity extends AppCompatActivity {
         LocationService.setActivity(this);
         Log.d("onCreate MAIN ACTIVITY","Activamos servicio");
         startService(new Intent(this, LocationService.class));
+        if(contador==0){
+            Toast.makeText(this, "Buscando posición GPS.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Esto puede tardar unos instantes.", Toast.LENGTH_LONG).show();
+
+        }
+        contador++;
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
