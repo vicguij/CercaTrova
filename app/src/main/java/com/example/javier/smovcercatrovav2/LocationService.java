@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -27,6 +26,7 @@ import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
 
+import static com.example.javier.smovcercatrovav2.MainActivity.contador;
 import static com.google.android.gms.location.LocationServices.*;
 
 
@@ -64,6 +64,9 @@ public class LocationService extends IntentService implements LocationListener, 
             latitud = loc.getLatitude();
             longitud = loc.getLongitude();
             Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud+ "  "+MainActivity.isUpdate());
+            if (contador==0)
+                MainActivity.setUpdate(true);
+
         }
     }
 
@@ -188,6 +191,7 @@ public class LocationService extends IntentService implements LocationListener, 
             Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(apiClient);
             if(lastLocation!=null){
                 setLocation(lastLocation);
+
             }
             try {
                 Thread.sleep(interval-500);
@@ -239,9 +243,7 @@ public class LocationService extends IntentService implements LocationListener, 
     public void onLocationChanged(Location location) {
         boolean conectada = apiClient.isConnected();
         Log.i(TAG, "Recibida nueva ubicación! Conexion:"+conectada);
-        if(location!=null) {
-            MainActivity.setUpdate(true);
-        }
+
     }
 
     @Override
