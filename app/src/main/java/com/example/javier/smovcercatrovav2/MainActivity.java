@@ -16,6 +16,16 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int PETICION_PERMISO_LOCALIZACION = 101;
     public static int contador=0;
+    public static boolean update = false;
+
+    public static boolean isUpdate(){
+        return update;
+    }
+
+    public static void setUpdate( boolean bol){
+        update = bol;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

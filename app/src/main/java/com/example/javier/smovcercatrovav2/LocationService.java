@@ -239,6 +239,7 @@ public class LocationService extends IntentService implements LocationListener, 
     public void onLocationChanged(Location location) {
         boolean conectada = apiClient.isConnected();
         Log.i(TAG, "Recibida nueva ubicación! Conexion:"+conectada);
+        MainActivity.setUpdate(true);
     }
 
     @Override
