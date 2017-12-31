@@ -63,7 +63,7 @@ public class LocationService extends IntentService implements LocationListener, 
         if(loc!=null) {
             latitud = loc.getLatitude();
             longitud = loc.getLongitude();
-            Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud);
+            Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud+ "  "+MainActivity.isUpdate());
         }
     }
 
@@ -122,7 +122,7 @@ public class LocationService extends IntentService implements LocationListener, 
             interval = Integer.parseInt(interval_str);
         }
 
-        interval = interval * 1000;
+        interval = interval * 1000 ;
 
         if(interval>1000){
             interval_min = interval - 1000;
@@ -190,7 +190,7 @@ public class LocationService extends IntentService implements LocationListener, 
                 setLocation(lastLocation);
             }
             try {
-                Thread.sleep(interval);
+                Thread.sleep(interval-500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -239,7 +239,9 @@ public class LocationService extends IntentService implements LocationListener, 
     public void onLocationChanged(Location location) {
         boolean conectada = apiClient.isConnected();
         Log.i(TAG, "Recibida nueva ubicación! Conexion:"+conectada);
-        MainActivity.setUpdate(true);
+        if(location!=null) {
+            MainActivity.setUpdate(true);
+        }
     }
 
     @Override
