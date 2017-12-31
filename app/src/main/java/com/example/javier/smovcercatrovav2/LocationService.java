@@ -77,6 +77,10 @@ public class LocationService extends IntentService implements LocationListener, 
         super(TAG);
     }
 
+    public static GoogleApiClient getApliClient(){
+        return apiClient;
+    }
+
 
     @Override
     public void onCreate() {
@@ -177,7 +181,7 @@ public class LocationService extends IntentService implements LocationListener, 
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.
-                //return;
+                return;
             }
             Location lastLocation = LocationServices.FusedLocationApi.getLastLocation(apiClient);
             if(lastLocation!=null){
@@ -221,6 +225,7 @@ public class LocationService extends IntentService implements LocationListener, 
     public void onDestroy() {
         super.onDestroy();
         runFlag=false;
+        activo = false;
         // Se desactivan location updates
         Log.d(TAG, "onDestroyed");
         if(apiClient.isConnected()) {
@@ -254,26 +259,6 @@ public class LocationService extends IntentService implements LocationListener, 
         Log.e(LOGTAG, "Se ha interrumpido la conexión con Google Play Services");
     }
 
-    /*
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == PETICION_PERMISO_LOCALIZACION) {
-            if (grantResults.length == 1
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Permiso concedido
-                @SuppressWarnings("MissingPermission")
-                Location lastLocation =
-                        LocationServices.FusedLocationApi.getLastLocation(apiClient);
-                LocationService.setLocation(lastLocation);
-            } else {
-                //Permiso denegado:
-                //Deberíamos deshabilitar toda la funcionalidad relativa a la localización.
-
-                Log.e(LOGTAG, "Permiso denegado");
-            }
-        }
-    }
-    */
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
