@@ -60,9 +60,11 @@ public class LocationService extends IntentService implements LocationListener, 
     }
 
     public static void setLocation(Location loc) {
-        latitud = loc.getLatitude();
-        longitud = loc.getLongitude();
-        Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud);
+        if(loc!=null) {
+            latitud = loc.getLatitude();
+            longitud = loc.getLongitude();
+            Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud);
+        }
     }
 
     public static double getLatitud() {
