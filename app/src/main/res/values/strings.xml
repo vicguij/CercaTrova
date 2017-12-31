@@ -4,7 +4,7 @@
     <string name="action_settings">Opciones</string>
     <string name="titleServiceStart">Arrancar servicio</string>
     <string name="titleServiceStop">Parar servicio</string>
-    <string name="intervaloActualizacion">Intervalo de actaulización en segundos</string>
+    <string name="intervaloActualizacion">Intervalo de actualización en segundos</string>
     <string name="titleIntervaloActualizacion">Intervalo de actualización</string>
 
     <string name="aplicationColor">Color de los items</string>

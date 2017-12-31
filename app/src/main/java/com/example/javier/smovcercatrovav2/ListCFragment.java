@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.BaseColumns;
@@ -149,14 +150,16 @@ public class ListCFragment extends ListFragment implements
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.Opc1:
-                Toast.makeText(getActivity(),"Pulsado!",Toast.LENGTH_SHORT).show();
-
-                Log.d("pinguino canario", "posicion" +info.position + " " + info.id);
-//BORRAR:dos maneras: A través de info.position (posicion en la base de datos) o info.id que parece ser el id del item en la base de datos.
+                //int rows = getActivity().getContentResolver().delete(CoordinatesContract.CONTENT_URI, null, null);
+              //  int rows = CoordinatesProvider.delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
+                int rows = getActivity().getContentResolver().delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
+                Toast.makeText(getActivity(),"Posición Borrada!",Toast.LENGTH_SHORT).show();
+                Log.d("Borrada", "posicion: " +info.position + " id: " + info.id);
 
                 return true;
             case R.id.Opc2:
                 //deleteNote(info.id);
+                //Ver si se puede implementar el metodo update y editarlo de forma sencilla --> Si no, borrar esta opción.
                 Toast.makeText(getActivity(),"Pulsado2!",Toast.LENGTH_SHORT).show();
                 return true;
             default:
