@@ -91,21 +91,27 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         Log.d("BOTON LIST", "Mostrando las coordenadas guardadas...");
 
         Cursor c = this.getActivity().getContentResolver().query(CoordinatesContract.CONTENT_URI, null, null, null, CoordinatesContract.DEFAULT_SORT);
+        if (c != null) {
+            if (c.getCount()==0){
+                Toast.makeText(getActivity(),"No hay posiciones guardadas",Toast.LENGTH_SHORT).show();
 
-        //Nos aseguramos de que existe al menos un registro
-        if (c.moveToFirst()) {
-            //Recorremos el cursor hasta que no haya más registros
-            do {
-                String id = c.getString(0);
-                String nombre = c.getString(1);
-                String latitud = c.getString(2);
-                String longitud = c.getString(3);
-                String fecha = c.getString(4);
-                Log.d("Registros:  ", "ID:"+id+", Nombre:"+nombre+", Latitud:"+latitud+", Longitud:"+longitud+", Fecha:"+fecha);
-            } while(c.moveToNext());
+            } else {
+                //Nos aseguramos de que existe al menos un registro
+                if (c.moveToFirst()) {
+                    //Recorremos el cursor hasta que no haya más registros
+                    do {
+                        String id = c.getString(0);
+                        String nombre = c.getString(1);
+                        String latitud = c.getString(2);
+                        String longitud = c.getString(3);
+                        String fecha = c.getString(4);
+                        Log.d("Registros:  ", "ID:" + id + ", Nombre:" + nombre + ", Latitud:" + latitud + ", Longitud:" + longitud + ", Fecha:" + fecha);
+                    } while (c.moveToNext());
+                }
+            c.close();
+                startActivity(new Intent(this.getActivity(), ListCActivity.class));
+            }
         }
-
-        startActivity(new Intent(this.getActivity(), ListCActivity.class));
     }
 
     @Override

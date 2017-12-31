@@ -42,9 +42,6 @@ public class ListCFragment extends ListFragment implements
 
     private static final int LOADER_ID = 42;
 
-    private Button btnVer;
-    private Button btnBorrar;
-
     private SimpleCursorAdapter mAdapter;
 
     private  String[] FROM = {
@@ -150,12 +147,15 @@ public class ListCFragment extends ListFragment implements
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         switch (item.getItemId()) {
             case R.id.Opc1:
-                //int rows = getActivity().getContentResolver().delete(CoordinatesContract.CONTENT_URI, null, null);
-              //  int rows = CoordinatesProvider.delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
-                int rows = getActivity().getContentResolver().delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
+                getActivity().getContentResolver().delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
                 Toast.makeText(getActivity(),"Posición Borrada!",Toast.LENGTH_SHORT).show();
                 Log.d("Borrada", "posicion: " +info.position + " id: " + info.id);
-
+                //Log.d("madapter", "posicion: " +mAdapter.getCount());
+                //Cuando se borra la ultima posicion, mAdapter count tiene valor 1
+                if (mAdapter.getCount()==1){
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             case R.id.Opc2:
                 //deleteNote(info.id);

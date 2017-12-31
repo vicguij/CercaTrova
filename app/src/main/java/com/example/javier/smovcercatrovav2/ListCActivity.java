@@ -44,8 +44,5 @@ public class ListCActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void onEntradaSelecionada(String id) {
-       Log.d("miau","prueba" +id);
 
-    }
 }
