@@ -115,9 +115,58 @@ public class CoordinatesProvider extends ContentProvider {
         return ret;
     }
 
+    /*
+    FORMA DE USO PARA CAMBIAR EL NOMBRE DE UNA COOORDENADA PASANDO EL ID:
+
+        // Nuevo nombre de la la coordinada con el id de abajo
+        String nuevo_nombre = "Update name";
+        //Id del objeto a cambiar el nombre
+        String id = "1514828341088";
+
+        int num=0;
+        try{
+            ContentValues values = new ContentValues();
+
+            // Meter en el content values
+            values.clear();
+            values.put(CoordinatesContract.Column.NOMBRE, nuevo_nombre );
+
+            //Se modifica utilizando el content provider
+            num = getContentResolver().update(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI,id), values, null, null );
+
+        }catch (Exception e){
+            Log.d("BOTON UPDATE", "EXCEPCION...");
+        }
+
+        Log.d("Update!","Actualizando el nombre de "+num+" tuplas.");
+
+     */
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
-        return 0;
+    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String s, @Nullable String[] strings) {
+        String where;
+
+        switch (sURIMatcher.match(uri)) {
+            case CoordinatesContract.STATUS_DIR:
+                where = s;
+                break;
+            case CoordinatesContract.STATUS_ITEM:
+                long id = ContentUris.parseId(uri);
+                where = CoordinatesContract.Column.ID
+                        + "="
+                        + id
+                        + (TextUtils.isEmpty(s) ? "" : " and ( " + s + " )");
+                break;
+            default:
+                throw new IllegalArgumentException("uri incorrecta: " + uri);
+        }
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        int ret = db.update(CoordinatesContract.TABLE, contentValues, where, strings);
+        if (ret > 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
+        }
+        Log.d(TAG, "registros actualizados: " + ret);
+        return ret;
     }
 
 }
