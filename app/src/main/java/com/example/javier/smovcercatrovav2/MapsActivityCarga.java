@@ -7,6 +7,8 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -34,6 +36,8 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
 
     private GoogleMap mMap;
 
+    private Button btnActualizar;
+
     SharedPreferences prefs;
 
     @Override
@@ -44,6 +48,18 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        btnActualizar = (Button)findViewById(R.id.BtnActualizar);
+
+        btnActualizar.setOnClickListener(new View.OnClickListener()
+        {
+
+            @Override
+            public void onClick(View v)
+            {
+                clickActualizar();
+            }
+        });
     }
 
 
@@ -58,6 +74,9 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
+        generarMapa(googleMap);
+        /*
         mMap = googleMap;
 
       //  mMap.setMyLocationEnabled(true);
@@ -97,7 +116,57 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
 
        // mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionCoche,15));
+        */
 
+    }
+
+    private void generarMapa(GoogleMap googleMap){
+        mMap = googleMap;
+        mMap.clear();
+
+        //  mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+        Bundle bundle = getIntent().getExtras();
+        LatLng posicionCoche = new LatLng(bundle.getDouble("latcoche"),bundle.getDouble("longcoche"));
+        LatLng posicionactual = new LatLng(LocationService.getLatitud(),LocationService.getLongitud());
+        //LatLng posicionactual = new LatLng(bundle.getDouble("latactual"),bundle.getDouble("longactual"));
+        Log.d("pinguino asesino", "posicion coche lat " + posicionCoche.latitude +"long " + posicionCoche.longitude );
+        Log.d("pinguino asesino", "posicion actual lat " + posicionactual.latitude +"long " + posicionactual.longitude );
+
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+
+        MapStyles.setActivity(this);
+        MapStyles.setStyles(prefs);
+
+        //SE aplican los estilos
+        if(MapStyles.getMapStyle()!=0){
+            mMap.setMapStyle( MapStyleOptions.loadRawResourceStyle(this, MapStyles.getMapStyle()));
+        }
+
+        if(MapStyles.getEstiloItemCoche()!=0){
+            mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche")).setIcon(BitmapDescriptorFactory.fromResource(MapStyles.getEstiloItemCoche()));
+        }else{
+            mMap.addMarker(new MarkerOptions().position(posicionCoche).title("Ubicacion coche"));
+        }
+
+        if(MapStyles.getEstiloItemActual()!=0){
+            mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual")).setIcon(BitmapDescriptorFactory.fromResource(MapStyles.getEstiloItemActual()));
+        }else{
+            mMap.addMarker(new MarkerOptions().position(posicionactual).title("Ubicacion actual"));
+        }
+
+        String url = obtenerDireccionesURL(posicionactual, posicionCoche);
+        DownloadTask downloadTask = new DownloadTask();
+        downloadTask.execute(url);
+
+        // mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionactual,15));
+    }
+
+    public void clickActualizar() {
+        Log.d("pinguino asesino", "CLICK ACTUALIZAR!!!");
+        generarMapa(mMap);
     }
 
     private String obtenerDireccionesURL(LatLng origin,LatLng dest){
@@ -116,7 +185,6 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
 
         return url;
     }
-
 
     private String downloadUrl(String strUrl) throws IOException {
         String data = "";

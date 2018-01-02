@@ -17,6 +17,7 @@
     <string name="color_item_gris">Gris</string>
     <string name="color_item_morado">Morado</string>
 
+    <string name="update_localizacion">Actualizar</string>
 
     <string name="title_activity_maps_carga">Map</string>
     <string name="title_activity_maps_guardar">Map</string>
