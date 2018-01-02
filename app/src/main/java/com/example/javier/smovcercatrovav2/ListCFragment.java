@@ -72,6 +72,7 @@ public class ListCFragment extends ListFragment implements
         setListAdapter(mAdapter);
         getLoaderManager().initLoader(LOADER_ID, null, this);
 
+
     }
 
     @Override
@@ -158,8 +159,12 @@ public class ListCFragment extends ListFragment implements
                 }
                 return true;
             case R.id.Opc2:
+                Intent intent = new Intent(this.getActivity(), EditActivity.class);
+                //Double latcoche = mAdapter.getCursor().getDouble(2);
+                intent.putExtra("id", info.id);
+                startActivity(intent);
                 //deleteNote(info.id);
-                //Ver si se puede implementar el metodo update y editarlo de forma sencilla --> Si no, borrar esta opción.
+
                 Toast.makeText(getActivity(),"Pulsado2!",Toast.LENGTH_SHORT).show();
                 return true;
             default:

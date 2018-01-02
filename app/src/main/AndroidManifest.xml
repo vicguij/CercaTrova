@@ -50,6 +50,7 @@
         <activity
             android:name=".MapsActivityGuardar"
             android:label="@string/title_activity_maps_guardar" />
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>
