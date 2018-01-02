@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="Introduzca un nombre"
+            android:hint="@string/introduznombre"
             tools:layout_editor_absoluteX="142dp"
             tools:layout_editor_absoluteY="48dp" />
 
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="28dp"
-            android:text="Guardar Posición"
+            android:text="@string/guardarPos"
             app:layout_constraintRight_toLeftOf="@+id/Nombre"
             tools:layout_editor_absoluteY="38dp" />
 

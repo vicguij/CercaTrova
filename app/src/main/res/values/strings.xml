@@ -18,12 +18,18 @@
     <string name="color_item_morado">Morado</string>
 
 
-
     <string name="title_activity_maps_carga">Map</string>
     <string name="title_activity_maps_guardar">Map</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
+    <string name="guardarPos">Guardar Posición</string>
+    <string name="verubic">Ver Ubicaciones</string>
+    <string name="introduznombre">Introduzca un nombre</string>
+    <string name="lat">Latitud: </string>
+    <string name="longit">Longitud: </string>
+    <string name="edit">Nuevo nombre</string>
+    <string name="botedit">Editar</string>
+    <string name="menuedit">Editar Nombre</string>
+    <string name="menuborrar">Borrar Posición</string>
 </resources>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">CercaTrova V2</string>
+    <string name="purge">Delete all locations</string>
+    <string name="action_settings">Options</string>
+    <string name="titleServiceStart">Start service</string>
+    <string name="titleServiceStop">Stop service</string>
+    <string name="intervaloActualizacion">Update interval (seconds)</string>
+    <string name="titleIntervaloActualizacion">Update interval</string>
+
+    <string name="aplicationColor">Item´s color</string>
+
+    <string name="color_item_negro">Black</string>
+    <string name="color_item_rojo">Red</string>
+    <string name="color_item_azul">Blue</string>
+    <string name="color_item_amarillo">Yellow</string>
+    <string name="color_item_verde">Green</string>
+    <string name="color_item_gris">Grey</string>
+    <string name="color_item_morado">Purple</string>
+
+
+    <string name="title_activity_maps_carga">Map</string>
+    <string name="title_activity_maps_guardar">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="guardarPos">Save Location</string>
+    <string name="verubic">See Locations</string>
+    <string name="introduznombre">Insert a name</string>
+    <string name="lat">Latitude: </string>
+    <string name="longit">Longitude: </string>
+    <string name="edit">New name</string>
+    <string name="botedit">Edit</string>
+    <string name="menuedit">Edit Name</string>
+    <string name="menuborrar">Delete Position</string>
+</resources>

@@ -15,7 +15,7 @@
         android:id="@+id/MainGuardar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Guardar posición"
+        android:text="@string/guardarPos"
         android:textSize="20sp" /> 
 
     <Space
@@ -27,7 +27,7 @@
         android:id="@+id/MainVerUbicaciones"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Ver Ubicaciones"
+        android:text="@string/verubic"
         android:textSize="20sp" />
 
 </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/Opc1"
-        android:title="Borrar"></item>
+        android:title="@string/menuborrar"></item>
     <item android:id="@+id/Opc2"
-        android:title="Editar nombre"></item>
+        android:title="@string/menuedit"></item>
 </menu>
