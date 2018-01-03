@@ -74,6 +74,10 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        LatLng posicioninicio = new LatLng(LocationService.getLatitud(),LocationService.getLongitud());
+        mMap = googleMap;
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicioninicio,15));
 
         generarMapa(googleMap);
         /*
@@ -161,7 +165,7 @@ public class MapsActivityCarga extends FragmentActivity implements OnMapReadyCal
         downloadTask.execute(url);
 
         // mMap.moveCamera(CameraUpdateFactory.newLatLng(posicion));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionactual,15));
+       // mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(posicionactual,15));
     }
 
     public void clickActualizar() {
