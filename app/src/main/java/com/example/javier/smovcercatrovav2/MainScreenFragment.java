@@ -86,6 +86,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
     }
 
     public void clickListLocations() {
+
         Log.d("BOTON LISTAR", "Listando las posiciones guardadas");
         //Se listan en el log
         Log.d("BOTON LIST", "Mostrando las coordenadas guardadas...");
@@ -119,10 +120,12 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         switch (v.getId()) {
             case R.id.MainGuardar:
                 //clickInsert();
+
                 Intent intent = new Intent(this.getActivity(), MapsActivityGuardar.class);
                 intent.putExtra("lat",LocationService.getLatitud());
                 intent.putExtra("long",LocationService.getLongitud());
                 Log.d("pinguino ninja", "son" +LocationService.getLatitud() + LocationService.getLongitud());
+                //getActivity().finish();
                 startActivity(intent);
                 break;
 

@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.location.LocationServices;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -117,6 +118,29 @@ protected void onResume(){
             }
         }
     }
+    /*
+    * Con este método controlamos el flujo de actividades, de forma que si el usuario está en la pantalla principal
+    * y pulsa el botón de "atrás", la aplicación se cierre independientemente de que hubiese actividades que se hubiesen visitado antes
+    * La necesidad de esta solución surge tras probar la interconexión entre las actividades, pues al pulsar el botón atrás
+    * se detectaron anomalías.
+    * */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+            return true;
+
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+
 
 
 }

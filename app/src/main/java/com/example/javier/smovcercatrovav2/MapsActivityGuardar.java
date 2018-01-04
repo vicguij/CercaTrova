@@ -8,6 +8,7 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -127,8 +128,25 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
 
         }
         Toast.makeText(this,getString(R.string.bienguardar),Toast.LENGTH_SHORT).show();
+        finish();
+
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+   /* @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+
+            return true;
+
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
+*/
 }
