@@ -16,7 +16,14 @@
     <string name="color_item_verde">Verde</string>
     <string name="color_item_gris">Gris</string>
     <string name="color_item_morado">Morado</string>
-
+    <string name="inicio1">Buscando posición GPS</string>
+    <string name="inicio2">Podría demorarse un poco</string>
+    <string name="encontrada">Se ha encontrado la ubicación</string>
+    <string name="delete">filas de la base de datos borradas</string>
+    <string name="zeroguardadas">No hay posiciones guardadas</string>
+    <string name="selectdelete">¡Posición borrada!</string>
+    <string name="falloguardar">¡No se ha podido guardar la ubicación!</string>
+    <string name="bienguardar">¡Ubicación guardada!</string>
     <string name="update_localizacion">Actualizar</string>
 
     <string name="title_activity_maps_carga">Map</string>

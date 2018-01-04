@@ -16,7 +16,14 @@
     <string name="color_item_verde">Green</string>
     <string name="color_item_gris">Grey</string>
     <string name="color_item_morado">Purple</string>
-
+    <string name="inicio1">Searching GPS</string>
+    <string name="inicio2">It could take a moment</string>
+    <string name="encontrada">Position found</string>
+    <string name="delete">rows of the database deleted</string>
+    <string name="zeroguardadas">There isn´t saved positions</string>
+    <string name="selectdelete">Deleted position!</string>
+    <string name="falloguardar">Can´t save the position!</string>
+    <string name="bienguardar">Saved position!</string>
     <string name="update_localizacion">Update</string>
 
     <string name="title_activity_maps_carga">Map</string>

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -122,8 +123,10 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
 
         }catch (Exception e) {
             Log.d("BOTON INSERT", "EXCEPCION...");
-        }
+            Toast.makeText(this,getString(R.string.falloguardar),Toast.LENGTH_SHORT).show();
 
+        }
+        Toast.makeText(this,getString(R.string.bienguardar),Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

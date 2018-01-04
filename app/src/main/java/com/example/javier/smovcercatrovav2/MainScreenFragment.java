@@ -93,7 +93,7 @@ public class MainScreenFragment extends Fragment implements View.OnClickListener
         Cursor c = this.getActivity().getContentResolver().query(CoordinatesContract.CONTENT_URI, null, null, null, CoordinatesContract.DEFAULT_SORT);
         if (c != null) {
             if (c.getCount()==0){
-                Toast.makeText(getActivity(),"No hay posiciones guardadas",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),getString(R.string.zeroguardadas),Toast.LENGTH_SHORT).show();
 
             } else {
                 //Nos aseguramos de que existe al menos un registro

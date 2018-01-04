@@ -149,7 +149,7 @@ public class ListCFragment extends ListFragment implements
         switch (item.getItemId()) {
             case R.id.Opc1:
                 getActivity().getContentResolver().delete(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI, String.valueOf(info.id)), null, null);
-                Toast.makeText(getActivity(),"Posición Borrada!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),getString(R.string.selectdelete),Toast.LENGTH_SHORT).show();
                 Log.d("Borrada", "posicion: " +info.position + " id: " + info.id);
                 //Log.d("madapter", "posicion: " +mAdapter.getCount());
                 //Cuando se borra la ultima posicion, mAdapter count tiene valor 1
@@ -164,8 +164,6 @@ public class ListCFragment extends ListFragment implements
                 intent.putExtra("id", info.id);
                 startActivity(intent);
                 //deleteNote(info.id);
-
-                Toast.makeText(getActivity(),"Pulsado2!",Toast.LENGTH_SHORT).show();
                 return true;
             default:
                 return super.onContextItemSelected(item);

@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         startService(new Intent(this, LocationService.class));
         if(contador==0){
 
-                Toast.makeText(this, "Buscando posición GPS.", Toast.LENGTH_LONG).show();
-                Toast.makeText(this, "Podría tardar un poco", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.inicio1), Toast.LENGTH_LONG).show();
+                Toast.makeText(this, getString(R.string.inicio2), Toast.LENGTH_LONG).show();
         }
 
     }
@@ -62,10 +62,8 @@ protected void onResume(){
     Log.d("onCreate MAIN ACTIVITY","contador="+contador);
 
     if((isUpdate())&&(contador==0)) {
-         Toast.makeText(this, "Se ha encontrado la ubicación.", Toast.LENGTH_LONG).show();
+         Toast.makeText(this, getString(R.string.encontrada), Toast.LENGTH_LONG).show();
 
-        // Toast.makeText(this, "Buscando posición GPS.", Toast.LENGTH_LONG).show();
-        //Toast.makeText(this, "Esto puede tardar unos instantes.", Toast.LENGTH_LONG).show();
    }
    //De mostrarse, el mensaje de que se ha encontrado la ubicación solo debe ser cuando se abra la app.
     contador++;
@@ -87,7 +85,7 @@ protected void onResume(){
                 Log.d("MENU","Purgar base de datos");
 
                 int rows = getContentResolver().delete(CoordinatesContract.CONTENT_URI, null, null);
-                Toast.makeText(this, rows+" filas de la base de datos borradas", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, rows+" " + getString(R.string.delete), Toast.LENGTH_LONG).show();
 
                 return true;
             default:
