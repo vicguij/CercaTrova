@@ -118,11 +118,14 @@ public class LocationService extends IntentService implements LocationListener, 
 
         long interval;
         long interval_min = 1;
-        if (interval_str == "") {
+
+        if ((interval_str.contentEquals("")) || (interval_str.contentEquals("0"))) {
             // Si no hay configuración, se pone por defecto 2 segundos
             interval = 2;
         } else {
             interval = Integer.parseInt(interval_str);
+
+
         }
 
         interval = interval * 1000 ;
