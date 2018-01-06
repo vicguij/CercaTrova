@@ -6,9 +6,10 @@
     <string name="titleServiceStop">Stop service</string>
     <string name="intervaloActualizacion">Update interval (seconds)</string>
     <string name="titleIntervaloActualizacion">Update interval</string>
-
     <string name="aplicationColor">Item´s color</string>
-
+    <string name="pincoche">Car marker</string>
+    <string name="pinactual">Actual location marker</string>
+    <string name="estilomapa">map style</string>
     <string name="color_item_negro">Black</string>
     <string name="color_item_rojo">Red</string>
     <string name="color_item_azul">Blue</string>

@@ -5,33 +5,34 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     <EditTextPreference
         android:summary="@string/intervaloActualizacion"
         android:title="@string/titleIntervaloActualizacion"
+        android:inputType="number"
         android:key="update_interval" />
 
 <ListPreference
     android:key="aplication_color"
     android:title="@string/aplicationColor"
-    android:summary="Summary"
+    android:summary=""
     android:entries="@array/color_items"
     android:entryValues="@array/color_values"/>
 
     <ListPreference
         android:key="aplication_item_coche"
-        android:title="Tipo de pin para localizacion del coche"
-        android:summary="Summary"
+        android:title="@string/pincoche"
+        android:summary=""
         android:entries="@array/coche_items"
         android:entryValues="@array/coche_values"/>
 
     <ListPreference
         android:key="aplication_item_actual"
-        android:title="Tipo de pin para localizacion actual"
-        android:summary="Summary"
+        android:title="@string/pinactual"
+        android:summary=""
         android:entries="@array/actual_items"
         android:entryValues="@array/actual_values"/>
 
     <ListPreference
         android:key="aplication_tipo_mapa"
         android:title="Estilo del mapa"
-        android:summary="Summary"
+        android:summary=""
         android:entries="@array/mapa_items"
         android:entryValues="@array/mapa_values"/>
 
