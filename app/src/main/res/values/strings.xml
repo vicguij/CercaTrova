@@ -6,9 +6,9 @@
     <string name="titleServiceStop">Parar servicio</string>
     <string name="intervaloActualizacion">Intervalo de actualización en segundos</string>
     <string name="titleIntervaloActualizacion">Intervalo de actualización</string>
-    <string name="aplicationColor">Color de los items</string>
-    <string name="pincoche">Tipo de pin para localizacion del coche</string>
-    <string name="pinactual">Tipo de pin para localizacion actual</string>
+    <string name="aplicationColor">Color de los marcadores</string>
+    <string name="pincoche">Marcador para localizacion del coche</string>
+    <string name="pinactual">Marcador para localizacion actual</string>
     <string name="estilomapa">Estilo del mapa</string>
 
     <string name="color_item_negro">Negro</string>
