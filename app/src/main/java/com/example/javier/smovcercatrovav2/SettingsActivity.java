@@ -1,13 +1,17 @@
 package com.example.javier.smovcercatrovav2;
 
-/**
- * Created by javier on 8/12/17.
- */
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -20,9 +24,9 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-// Comprobar que no se ha creado la actividad antes
+        // Comprobar que no se ha creado la actividad antes
         if (savedInstanceState == null) {
-// Crear el fragment
+        // Crear el fragment
             SettingsFragment fragment = new SettingsFragment();
             getFragmentManager()
                     .beginTransaction()

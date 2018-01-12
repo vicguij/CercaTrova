@@ -1,12 +1,15 @@
 package com.example.javier.smovcercatrovav2;
 
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.support.annotation.IntegerRes;
 
-/**
- * Created by javier on 28/12/17.
- */
 
 public class MapStyles {
 

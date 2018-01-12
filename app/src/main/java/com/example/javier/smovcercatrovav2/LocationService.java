@@ -1,5 +1,12 @@
 package com.example.javier.smovcercatrovav2;
 
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.Manifest;
 import android.app.IntentService;
 import android.content.Intent;
@@ -25,7 +32,6 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
-
 import static com.example.javier.smovcercatrovav2.MainActivity.contador;
 import static com.google.android.gms.location.LocationServices.*;
 
@@ -66,7 +72,6 @@ public class LocationService extends IntentService implements LocationListener, 
             Log.d(TAG, "Longitud: " + longitud + "   Latitud: " + latitud+ "  "+MainActivity.isUpdate());
             if (contador==0)
                 MainActivity.setUpdate(true);
-
         }
     }
 
@@ -112,9 +117,6 @@ public class LocationService extends IntentService implements LocationListener, 
         prefs = PreferenceManager.getDefaultSharedPreferences(activity);
 
         String interval_str = prefs.getString("update_interval", "");
-
-        // ###################################################
-        // VALIDAR QUE SOLO SE ESCRIBAN NUMEROS Y NO CADENAS DE TEXTO
 
         long interval;
         long interval_min = 1;
@@ -168,13 +170,11 @@ public class LocationService extends IntentService implements LocationListener, 
                             Log.i(TAG, "Se requiere actuación del usuario");
                             status.startResolutionForResult(activity, PETICION_CONFIG_UBICACION);
                         } catch (IntentSender.SendIntentException e) {
-                            // Poner toast ###### MIRAR #######
                             Log.i(TAG, "Error al intentar solucionar configuración de ubicación");
                         }
                         break;
                     case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
                         Log.i(TAG, "No se puede cumplir la configuración de ubicación necesaria");
-                        // Poner toast  ###### MIRAR #######
                         break;
                 }
             }
@@ -207,14 +207,8 @@ public class LocationService extends IntentService implements LocationListener, 
     private void startLocationUpdates() {
         if (ActivityCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            //Ojo: estamos suponiendo que ya tenemos concedido el permiso.
-            //Sería recomendable implementar la posible petición en caso de no tenerlo.
-
             Log.i(TAG, "Inicio de recepción de ubicaciones");
-
-            Log.i(TAG, "activo == true");
             activo = true;
-
             FusedLocationApi.requestLocationUpdates(
                     apiClient, locRequest, this);
         }
@@ -225,9 +219,7 @@ public class LocationService extends IntentService implements LocationListener, 
         FusedLocationApi.removeLocationUpdates(
                 apiClient, this);
 
-        Log.i(TAG, "activo == false");
         activo = false;
-
     }
 
     @Override
@@ -246,7 +238,6 @@ public class LocationService extends IntentService implements LocationListener, 
     public void onLocationChanged(Location location) {
         boolean conectada = apiClient.isConnected();
         Log.i(TAG, "Recibida nueva ubicación! Conexion:"+conectada);
-
     }
 
     @Override
@@ -276,4 +267,5 @@ public class LocationService extends IntentService implements LocationListener, 
         //y la conexión con los Google Play Services no se ha establecido.
         Log.e(LOGTAG, "Error grave al conectar con Google Play Services");
     }
+
 }

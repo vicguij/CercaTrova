@@ -1,18 +1,20 @@
 package com.example.javier.smovcercatrovav2;
 
-import com.google.android.gms.maps.model.LatLng;
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
 
+import com.google.android.gms.maps.model.LatLng;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * Created by javier on 27/12/17.
- */
 
 public class DirectionsJSONParser {
 

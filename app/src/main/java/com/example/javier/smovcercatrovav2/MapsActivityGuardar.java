@@ -1,5 +1,12 @@
 package com.example.javier.smovcercatrovav2;
 
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,12 +15,10 @@ import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,10 +26,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyCallback {
 
@@ -33,6 +38,7 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
     private EditText txt;
     SharedPreferences prefs;
     LatLng posicion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +47,9 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         txt = (EditText)findViewById(R.id.Nombre);
         btnGuardar = (Button)findViewById(R.id.BtnGuardar);
-        //btnGuardar.setOnClickListener((View.OnClickListener) this);
         btnGuardar.setOnClickListener(new View.OnClickListener()
         {
 
@@ -92,8 +98,6 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
     public void clickInsert() {
         double latitud = posicion.latitude;
         double longitud = posicion.longitude;
-       // double latitud = LocationService.getLatitud();
-        //double longitud = LocationService.getLongitud();
         Log.d("BOTON INSERT", "Insertando coordenadas: "+longitud+", "+latitud);
 
         // Cogemos un identificador unico: un timestamp del sistema
@@ -105,8 +109,6 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
 
         // Nombre de la coordenada a insertar
         String nombre = txt.getText().toString();
-
-        Log.d("pinguino malvado", "Insertando: "+id+", "+nombre+", "+date+", "+latitud+", "+longitud);
 
         try{
             ContentValues values = new ContentValues();
@@ -134,19 +136,4 @@ public class MapsActivityGuardar extends FragmentActivity implements OnMapReadyC
         startActivity(intent);
     }
 
-   /* @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event)
-    {
-        if ((keyCode == KeyEvent.KEYCODE_BACK))
-        {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-
-            return true;
-
-        }
-
-        return super.onKeyDown(keyCode, event);
-    }
-*/
 }

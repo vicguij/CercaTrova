@@ -1,5 +1,12 @@
 package com.example.javier.smovcercatrovav2;
 
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,6 +22,7 @@ public class EditActivity extends AppCompatActivity {
 
     private Button btnEditar;
     private EditText edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,33 +67,6 @@ public class EditActivity extends AppCompatActivity {
             Log.d("Update!","Actualizando el nombre de "+num+" tuplas.");
 
         }
-        Intent intent = new Intent(this, ListCActivity.class);
-        startActivity(intent);
-        /*
-    FORMA DE USO PARA CAMBIAR EL NOMBRE DE UNA COOORDENADA PASANDO EL ID:
-
-        // Nuevo nombre de la la coordinada con el id de abajo
-        String nuevo_nombre = "Update name";
-        //Id del objeto a cambiar el nombre
-        String id = "1514828341088";
-
-        int num=0;
-        try{
-            ContentValues values = new ContentValues();
-
-            // Meter en el content values
-            values.clear();
-            values.put(CoordinatesContract.Column.NOMBRE, nuevo_nombre );
-
-            //Se modifica utilizando el content provider
-            num = getContentResolver().update(Uri.withAppendedPath(CoordinatesContract.CONTENT_URI,id), values, null, null );
-
-        }catch (Exception e){
-            Log.d("BOTON UPDATE", "EXCEPCION...");
-        }
-
-        Log.d("Update!","Actualizando el nombre de "+num+" tuplas.");
-
-     */
+        finish();
     }
 }

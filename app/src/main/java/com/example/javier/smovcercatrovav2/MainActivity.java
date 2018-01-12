@@ -1,5 +1,12 @@
 package com.example.javier.smovcercatrovav2;
 
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -36,14 +43,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d("onCreate MAIN ACTIVITY","Activamos servicio");
         startService(new Intent(this, LocationService.class));
         if(contador==0){
-
                 Toast.makeText(this, getString(R.string.inicio1), Toast.LENGTH_LONG).show();
                 Toast.makeText(this, getString(R.string.inicio2), Toast.LENGTH_LONG).show();
         }
-
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -54,40 +57,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart(){
         super.onStart();
-        Log.d("START","Se vuelve a primer plano");
-
     }
-@Override
-protected void onResume(){
+
+    @Override
+    protected void onResume(){
         super.onResume();
-    Log.d("onCreate MAIN ACTIVITY","contador="+contador);
+        if((isUpdate())&&(contador==0)) {
+            Toast.makeText(this, getString(R.string.encontrada), Toast.LENGTH_LONG).show();
+        }
+        //De mostrarse, el mensaje de que se ha encontrado la ubicación solo debe ser cuando se abra la app.
+        contador++;
+    }
 
-    if((isUpdate())&&(contador==0)) {
-         Toast.makeText(this, getString(R.string.encontrada), Toast.LENGTH_LONG).show();
-
-   }
-   //De mostrarse, el mensaje de que se ha encontrado la ubicación solo debe ser cuando se abra la app.
-    contador++;
-
-}
     @Override
     protected void onStop(){
         super.onStop();
-        Log.d("STOP","...");
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                Log.d("MENU","Action settings");
                 startActivity(new Intent(this, SettingsActivity.class));
                 return true;
             case R.id.action_purge:
-                Log.d("MENU","Purgar base de datos");
-
                 int rows = getContentResolver().delete(CoordinatesContract.CONTENT_URI, null, null);
                 Toast.makeText(this, rows+" " + getString(R.string.delete), Toast.LENGTH_LONG).show();
-
                 return true;
             default:
                 return false;
@@ -113,7 +107,6 @@ protected void onResume(){
             } else {
                 //Permiso denegado:
                 //Deberíamos deshabilitar toda la funcionalidad relativa a la localización.
-
                 Log.e("PERMISOS", "Permiso denegado");
             }
         }
@@ -135,12 +128,8 @@ protected void onResume(){
             startActivity(intent);
 
             return true;
-
         }
-
         return super.onKeyDown(keyCode, event);
     }
-
-
 
 }

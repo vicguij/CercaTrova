@@ -6,8 +6,8 @@
         <item>@string/color_item_rojo</item>
         <item>@string/color_item_azul</item>
         <item>@string/color_item_amarillo</item>
-        <item>@string/color_item_verde</item>
         <item>@string/color_item_gris</item>
+        <item>@string/color_item_verde</item>
         <item>@string/color_item_morado</item>
     </string-array>
 

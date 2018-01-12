@@ -1,14 +1,16 @@
 package com.example.javier.smovcercatrovav2;
 
-import android.content.Intent;
+/*
+Ingeniería Informática - Sistemas Móviles - 2017-2018
+Cerca Trova
+Javier Hernaz González
+Victor Guijarro Esteban
+*/
+
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-
-/**
- * Created by javier on 19/12/17.
- */
 
 public class ListCActivity extends AppCompatActivity {
 
@@ -30,8 +32,6 @@ public class ListCActivity extends AppCompatActivity {
                             fragment.getClass().getSimpleName())
                     .commit();
         }
-
-
     }
 
     @Override
